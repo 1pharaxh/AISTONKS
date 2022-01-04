@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{%block title%} AISTONKS! {% endblock %}
+{% block content %}
+<form action="#" method ="post">
+    <p>Stock Symbol:</p>
+    <p><input type="text" name="ticker" /></p>
+    <p>WANT TO INCLUDE DATE ?(Warning: Including date could yield inaccurate results)</p>
+    <p><input type="radio" name="options" id="yes" value="yes"> Yes </input><br>
+        <input type="radio" name="options" id="no" value="no"> No </input><br></p>
+        <p>Stock Opening Value($):</p>
+        <p><input type="text" name="openval" /></p>
+        <p><input type="submit" value="submit" /></p>  
+</form>
+{% endblock %}
