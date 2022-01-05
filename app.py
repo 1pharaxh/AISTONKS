@@ -1,10 +1,14 @@
 from flask import Flask, redirect, url_for, render_template, request
-from datetime import date, datetime
+from datetime import date
 from AI_modified import prediction
+import os
 app = Flask(__name__)
-
+picture = os.path.join('static', 'images')
+app.config['UPLOAD_FOLDER'] = picture
+imageName = ''
 @app.route("/", methods=["POST", "GET"])
 def input():
+    global imageName
     if request.method == "POST":
         user = request.form["ticker"]
         TickerSymbol = user
@@ -15,7 +19,6 @@ def input():
             Date=True
             today = date.today()
             odtime = today.strftime("%Y-%m-%d")
-            
             print("[DEBUG] date =",odtime)
         else:
             Date=False
@@ -26,14 +29,15 @@ def input():
         print("[DEBUG] openval =", openvalue)
         predict = prediction(TickerSymbol, Date, custom_prediction, odtime)
         print("[DEBUG] Prediction =", predict)
+        imageName = TickerSymbol
         return redirect(url_for("user", value=predict))
     else:
         return render_template("input.html")
 
-
 @app.route("/<value>")
 def user(value):
-    return f"<h1>Prediction = {value}</h1>"
+    pic = os.path.join(picture, f"{imageName}.png")
+    return render_template("output.html", predict = value, image=pic)
 
 if __name__ == "__main__":
     app.run(debug=True)
