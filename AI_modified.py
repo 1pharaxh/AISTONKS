@@ -6,6 +6,10 @@ import sklearn
 from sklearn import linear_model
 from datetime import datetime
 import pickle
+import matplotlib.pyplot as plt
+from matplotlib import style
+import mplcyberpunk
+
 def prediction(TickerSymbol, Date=False, custom_prediction=0, odtime=None):
     getFbinfo = yf.Ticker(TickerSymbol)
     history = getFbinfo.history(period="6mo")
@@ -45,10 +49,25 @@ def prediction(TickerSymbol, Date=False, custom_prediction=0, odtime=None):
         odtime = datetime.strptime(odtime, "%Y-%m-%d")
         predict2 = regression.predict([[custom_prediction, odtime.toordinal()]])
         out_arr = np.array_str(predict2)
+        dataF = pd.DataFrame({'Closing':y_test, 'Predicted Closing':regression.predict(x_test)})
+        style.use("cyberpunk")
+        dataF.plot(marker='o').set_title("With Date")
+        plt.figtext(.8, .9, f'Accuracy = {round(bestModel*100)}%')
+        plt.grid()
+        mplcyberpunk.add_glow_effects()
+        plt.savefig("{}.png".format(TickerSymbol), dpi=100)
         return out_arr.replace('[', '').replace(']', '')
     elif Date == False:
         predict2 = regression.predict([[custom_prediction]])
         out_arr = np.array_str(predict2)
+        dataF = pd.DataFrame({'Closing':y_test, 'Predicted Closing':regression.predict(x_test)})
+        style.use("cyberpunk")
+        dataF.plot(marker='o').set_title("Without Date")
+        plt.figtext(.8, .9, f'Accuracy = {round(bestModel*100)}%')
+        plt.grid()
+        mplcyberpunk.add_glow_effects()
+        plt.savefig("{}.png".format(TickerSymbol), dpi=100)
         return out_arr.replace('[', '').replace(']', '')
-
-# print(prediction(TickerSymbol="FB", Date=True, custom_prediction=328.36, odtime="2021-10-14"))
+    
+# predic = prediction(TickerSymbol="FB", Date=True, custom_prediction=328.36, odtime="2021-10-14")
+# print(predic)
