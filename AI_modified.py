@@ -4,16 +4,23 @@ import numpy as np
 import pandas as pd
 import sklearn
 from sklearn import linear_model
-from datetime import datetime
 import pickle
 import matplotlib.pyplot as plt
 from matplotlib import style
-from datetime import date
+from datetime import date, datetime, timedelta
+from dateutil.relativedelta import relativedelta
 import mplcyberpunk
 
 def prediction(TickerSymbol, Date=False, custom_prediction=0, odtime=None):
+    endDay = datetime.today() - timedelta(days=1)
+    endDay = endDay.date()
+    delta = relativedelta(months=6)
+    startDay = endDay - delta
+    endDay = datetime.today()
+    endDay = endDay.date()
+    startDay -= timedelta(days=1)
     getFbinfo = yf.Ticker(TickerSymbol)
-    history = getFbinfo.history(period="6mo")
+    history = getFbinfo.history(start=startDay, end=endDay)
     history.to_csv("{}.csv".format(TickerSymbol))
     data = pd.read_csv("{}.csv".format(TickerSymbol))
     ordinalTime = []
@@ -70,5 +77,5 @@ def prediction(TickerSymbol, Date=False, custom_prediction=0, odtime=None):
         plt.savefig("static/images/{}.png".format(TickerSymbol), dpi=100)
         return out_arr.replace('[', '').replace(']', '')
     
-# predic = prediction(TickerSymbol="FB", Date=True, custom_prediction=328.36, odtime="2021-10-14")
+# predic = prediction(TickerSymbol="FB", Date=True, custom_prediction=333.02, odtime="2022-01-5")
 # print(predic)
