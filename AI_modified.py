@@ -8,6 +8,7 @@ from datetime import datetime
 import pickle
 import matplotlib.pyplot as plt
 from matplotlib import style
+from datetime import date
 import mplcyberpunk
 
 def prediction(TickerSymbol, Date=False, custom_prediction=0, odtime=None):
@@ -49,24 +50,24 @@ def prediction(TickerSymbol, Date=False, custom_prediction=0, odtime=None):
         odtime = datetime.strptime(odtime, "%Y-%m-%d")
         predict2 = regression.predict([[custom_prediction, odtime.toordinal()]])
         out_arr = np.array_str(predict2)
-        dataF = pd.DataFrame({'Closing':y_test, 'Predicted Closing':regression.predict(x_test)})
+        dataF = pd.DataFrame({'Closing value':y_test, 'Predicted Closing value':regression.predict(x_test)})
         style.use("cyberpunk")
-        dataF.plot(marker='o').set_title("With Date")
+        dataF.plot(marker='o').set_title("{} Stocks - Prediction with date : {}".format(TickerSymbol, date.today()))
         plt.figtext(.8, .9, f'Accuracy = {round(bestModel*100)}%')
         plt.grid()
         mplcyberpunk.add_glow_effects()
-        plt.savefig("{}.png".format(TickerSymbol), dpi=100)
+        plt.savefig("static/images/{}.png".format(TickerSymbol), dpi=100)
         return out_arr.replace('[', '').replace(']', '')
     elif Date == False:
         predict2 = regression.predict([[custom_prediction]])
         out_arr = np.array_str(predict2)
-        dataF = pd.DataFrame({'Closing':y_test, 'Predicted Closing':regression.predict(x_test)})
+        dataF = pd.DataFrame({'Closing value':y_test, 'Predicted Closing value':regression.predict(x_test)})
         style.use("cyberpunk")
-        dataF.plot(marker='o').set_title("Without Date")
+        dataF.plot(marker='o').set_title("{} Stocks - Prediction w/o date : {}".format(TickerSymbol, date.today()))
         plt.figtext(.8, .9, f'Accuracy = {round(bestModel*100)}%')
         plt.grid()
         mplcyberpunk.add_glow_effects()
-        plt.savefig("{}.png".format(TickerSymbol), dpi=100)
+        plt.savefig("static/images/{}.png".format(TickerSymbol), dpi=100)
         return out_arr.replace('[', '').replace(']', '')
     
 # predic = prediction(TickerSymbol="FB", Date=True, custom_prediction=328.36, odtime="2021-10-14")
