@@ -50,7 +50,7 @@ def prediction(TickerSymbol, Date=False, custom_prediction=0, odtime=None):
         odtime = datetime.strptime(odtime, "%Y-%m-%d")
         predict2 = regression.predict([[custom_prediction, odtime.toordinal()]])
         out_arr = np.array_str(predict2)
-        dataF = pd.DataFrame({'Closing value':y_test, 'Predicted Closing value':regression.predict(x_test)})
+        dataF = pd.DataFrame({'Actual Closing value':y_test, 'Predicted Closing value':regression.predict(x_test)})
         style.use("cyberpunk")
         dataF.plot(marker='o').set_title("{} Stocks - Prediction with date : {}".format(TickerSymbol, date.today()))
         plt.figtext(.8, .9, f'Accuracy = {round(bestModel*100)}%')
