@@ -42,4 +42,4 @@ def user(value):
     return render_template("output_new.html", predict = value, image=pic) 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
