@@ -1,7 +1,29 @@
-{% extends "base.html" %}
-{%block title%} AISTONKS! {% endblock %}
+{% extends "Home.html" %}
 {% block content %}
-<form action="#" method ="post">
+<form action="#" method="post" style="padding: 10px;">
+    <div class="u-form-group u-form-name">
+      <label for="name-3ed3" class="u-form-control-hidden u-label"></label>
+      <input type="text" placeholder="Enter stock symbol" id="name-3ed3" name="ticker" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-13 u-white" required="required">
+    </div>
+    <div class="u-form-group u-form-radiobutton u-form-group-2">
+      <div class="u-form-radio-button-wrapper">
+        <input type="radio" name="radiobutton" id="yes" value="yes">
+        <label class="u-label" for="radiobutton">Yes</label>
+        <br>
+        <input type="radio" name="radiobutton" id="no" value="no">
+        <label class="u-label" for="radiobutton">No</label>
+        <br>
+      </div>
+    </div>
+    <div class="u-form-email u-form-group">
+      <input type="text" placeholder="Enter stock opening value($):" name="openval" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-13 u-white">
+    </div>
+    <div class="u-align-left u-form-group u-form-submit">
+      <a href="#" class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-palette-1-light-2 u-radius-21 u-btn-1">Submit</a>
+      <input type="submit" value="submit" class="u-form-control-hidden">
+    </div>
+  </form>
+<!-- <form action="#" method ="post">
     <p>Stock Symbol:</p>
     <p><input type="text" name="ticker" /></p>
     <p>WANT TO INCLUDE DATE ?(Warning: Including date could yield inaccurate results)</p>
@@ -10,5 +32,5 @@
         <p>Stock Opening Value($):</p>
         <p><input type="text" name="openval" /></p>
         <p><input type="submit" value="submit" /></p>  
-</form>
+</form> -->
 {% endblock %}

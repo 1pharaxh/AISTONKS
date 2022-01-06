@@ -1,0 +1,10 @@
+{% extends "Output.html" %}
+{% block predict %}${{predict}}{% endblock %}
+{% block image %}
+<p>Prediction Summary: The graph below represents randomly 
+    selected 10% data from the whole dataset (called testing set).
+    Current model then predicts using the Open values of testing set
+    and the results are represented.
+</p>
+<center><img src="{{image}}"></center>
+{% endblock %}
