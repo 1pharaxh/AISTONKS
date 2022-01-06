@@ -13,15 +13,15 @@ def input():
         user = request.form["ticker"]
         TickerSymbol = user
         print("[DEBUG]TICKER SYMBOL =", user)
-        option = request.form['options']
+        option = request.form['radiobutton']
         print("[DEBUG] Include Date =", option)
         if option == 'yes':
-            Date=True
+            Date = True
             today = date.today()
             odtime = today.strftime("%Y-%m-%d")
             print("[DEBUG] date =",odtime)
         else:
-            Date=False
+            Date = False
             odtime = None
             pass
         openvalue = request.form["openval"]
@@ -36,8 +36,8 @@ def input():
 
 @app.route("/<value>")
 def user(value):
-    pic = os.path.join(picture, f"{imageName}.png")
-    return render_template("output.html", predict = value, image=pic)
+    pic = os.path.join(picture, f"{imageName}.jpeg")
+    return render_template("output_new.html", predict = value, image=pic)
 
 if __name__ == "__main__":
     app.run(debug=True)
