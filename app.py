@@ -2,6 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request
 from datetime import date
 from AI_modified import prediction
 import os
+import fileman
 app = Flask(__name__)
 picture = os.path.join('static', 'images')
 app.config['UPLOAD_FOLDER'] = picture
@@ -10,6 +11,7 @@ imageName = ''
 def input():
     global imageName
     if request.method == "POST":
+        fileman.filemgmt()
         user = request.form["ticker"]
         TickerSymbol = user
         print("[DEBUG]TICKER SYMBOL =", user)
@@ -36,8 +38,8 @@ def input():
 
 @app.route("/<value>")
 def user(value):
-    pic = os.path.join(picture, f"{imageName}.jpeg")
-    return render_template("output_new.html", predict = value, image=pic)
+    pic = os.path.join(picture, f"{imageName}.jpg")
+    return render_template("output_new.html", predict = value, image=pic) 
 
 if __name__ == "__main__":
     app.run(debug=True)
