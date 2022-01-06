@@ -14,23 +14,23 @@ def input():
         fileman.filemgmt()
         user = request.form["ticker"]
         TickerSymbol = user
-        print("[DEBUG]TICKER SYMBOL =", user)
+        # print("[DEBUG]TICKER SYMBOL =", user)
         option = request.form['radiobutton']
         print("[DEBUG] Include Date =", option)
         if option == 'yes':
             Date = True
             today = date.today()
             odtime = today.strftime("%Y-%m-%d")
-            print("[DEBUG] date =",odtime)
+            # print("[DEBUG] date =",odtime)
         else:
             Date = False
             odtime = None
             pass
         openvalue = request.form["openval"]
         custom_prediction = openvalue
-        print("[DEBUG] openval =", openvalue)
+        # print("[DEBUG] openval =", openvalue)
         predict = prediction(TickerSymbol, Date, custom_prediction, odtime)
-        print("[DEBUG] Prediction =", predict)
+        # print("[DEBUG] Prediction =", predict)
         imageName = TickerSymbol
         return redirect(url_for("user", value=predict))
     else:
