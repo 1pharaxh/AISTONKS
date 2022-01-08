@@ -5,7 +5,6 @@ import os
 import fileman
 app = Flask(__name__)
 # performing cleanup after 1 day
-fileman.cleanup(fileman.filemgmt())
 picture = os.path.join('static', 'images')
 app.config['UPLOAD_FOLDER'] = picture
 imageName = ''
@@ -13,6 +12,7 @@ imageName = ''
 def input():
     global imageName
     if request.method == "POST":
+        fileman.filemgmt()
         user = request.form["ticker"]
         TickerSymbol = user
         # print("[DEBUG]TICKER SYMBOL =", user)
