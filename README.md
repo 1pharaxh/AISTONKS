@@ -11,10 +11,15 @@ This app can be hosted on heroku with the included procfile.
 
 Feel free to use my code for your projects but if you can then please credit me :)
 
-DISCLAIMER: This project is only for "educational-purpose" PLEASE DO NOT use this project as any financial tool!
 
 # Find this  project on:
 http://aistonkss.herokuapp.com/
 
 # Demonstration
 ![AISTONKS!](https://user-images.githubusercontent.com/93630550/148630690-3ccb68b0-91af-4225-9da9-6105fabd27a3.gif)
+
+# DISCLAIMER
+This project is only for "educational-purpose" PLEASE DO NOT use this project as any financial tool!
+
+The predictions are NOT 100% accurate as the ML model does not 
+account for external factors affecting the stock price and some regression models could be a subject to outlier effect.
