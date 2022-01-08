@@ -3,6 +3,8 @@ from datetime import date
 from AI_modified import prediction
 import os
 import fileman
+# performing cleanup after 1 day
+fileman.cleanup(fileman.filemgmt())
 app = Flask(__name__)
 picture = os.path.join('static', 'images')
 app.config['UPLOAD_FOLDER'] = picture
@@ -11,7 +13,6 @@ imageName = ''
 def input():
     global imageName
     if request.method == "POST":
-        fileman.cleanup(fileman.filemgmt())
         user = request.form["ticker"]
         TickerSymbol = user
         # print("[DEBUG]TICKER SYMBOL =", user)
