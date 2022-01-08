@@ -5,7 +5,7 @@ with their corresponding dates. The frontend was designed with CSS and javascrip
 
 The machine learning algorithm is a simple linear regression model, the model is trained and tested 100 times and the model 
 with best accuracy is pickled and loaded for prediction using user input. After each runtime the program also does
-the cleanup of previously generated CSV file (for trainining and testing), the model and .jpg graph of the model illustrating its accuracy
+the cleanup of previously generated CSV file (used for trainining and testing), the model and .jpg graph of the model illustrating its accuracy
 
 This app can be hosted on heroku with the included procfile.
 
