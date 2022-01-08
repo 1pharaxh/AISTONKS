@@ -63,7 +63,7 @@ def prediction(TickerSymbol, Date=False, custom_prediction=0, odtime=None):
         plt.figtext(.42, .95, f'Accuracy = {round(bestModel*100)}%')
         plt.grid()
         mplcyberpunk.add_glow_effects()
-        plt.savefig("static/images/{}.jpg".format(TickerSymbol), dpi=100)
+        plt.savefig("static/images/{}.jpg".format(TickerSymbol), dpi=200)
         return out_arr.replace('[', '').replace(']', '')
     elif Date == False:
         predict2 = regression.predict([[custom_prediction]])
@@ -74,7 +74,7 @@ def prediction(TickerSymbol, Date=False, custom_prediction=0, odtime=None):
         plt.figtext(.42, .95, f'Accuracy = {round(bestModel*100)}%')
         plt.grid()
         mplcyberpunk.add_glow_effects()
-        plt.savefig("static/images/{}.jpg".format(TickerSymbol), dpi=100)
+        plt.savefig("static/images/{}.jpg".format(TickerSymbol), dpi=200)
         return out_arr.replace('[', '').replace(']', '')
     
 # predic = prediction(TickerSymbol="FB", Date=True, custom_prediction=333.02, odtime="2022-01-5")

@@ -11,7 +11,7 @@ imageName = ''
 def input():
     global imageName
     if request.method == "POST":
-        fileman.filemgmt()
+        fileman.cleanup(fileman.filemgmt())
         user = request.form["ticker"]
         TickerSymbol = user
         # print("[DEBUG]TICKER SYMBOL =", user)
