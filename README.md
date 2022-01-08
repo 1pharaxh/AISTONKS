@@ -13,7 +13,7 @@ Feel free to use my code for your projects but if you can then please credit me 
 
 DISCLAIMER: This project is only for "educational-purpose" PLEASE DO NOT use this project as any financial tool!
 
-# Find this  project is hosted on:
+# Find this  project on:
 http://aistonkss.herokuapp.com/
 
 # Demonstration
