@@ -39,7 +39,7 @@ def input():
 @app.route("/<value>")
 def user(value):
     pic = os.path.join(picture, f"{imageName}.jpg")
-    return render_template("output_new.html", predict = value, image=pic) 
+    return render_template("Output_new.html", predict = value, image=pic) 
 
 if __name__ == "__main__":
     app.run(debug=True)
