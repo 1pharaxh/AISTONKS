@@ -11,9 +11,9 @@ This app can be hosted on heroku with the included procfile.
 
 Feel free to use my code for your projects but if you can then please credit me :)
 
-DISCLAIMER: This code is only for "educational-purpose" PLEASE do not use this code as any financial tool!
+DISCLAIMER: This project is only for "educational-purpose" PLEASE DO NOT use this project as any financial tool!
 
-# This project is hosted on:
+# Find this  project is hosted on:
 http://aistonkss.herokuapp.com/
 
 # Demonstration
